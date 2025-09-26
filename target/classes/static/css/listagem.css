@@ -1,0 +1,59 @@
+body {
+    background: rgb(27, 27, 39);
+    color: rgb(237, 126, 143);
+}
+
+h1 {
+    margin: 10px 0px 20px 10px;
+    font-family: "Chewy", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+    color: rgba(165, 206, 112);
+}
+
+table {
+    border: 1px rgba(130, 157, 244) solid;
+    text-align: center;
+    font-family: "Schoolbell", cursive;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.2rem;
+    margin: 0px 0px 0px 10px;
+}
+
+thead {
+    border: 1px rgba(130, 157, 244) solid;
+    font-family: "Syne Mono", monospace;
+    font-style: bold;
+    font-weight: 800;
+    font-size:1.4rem
+}
+
+td, th {
+    padding: 0px 15px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.recuo {
+    text-align: left;
+    padding: 1px 20px;
+}
+
+.botao {
+    background: rgba(170, 175, 213);
+    font-family: "Syne Mono", monospace;
+    font-size: 1rem;
+    color: black;
+    border: 0;
+    border-right: 1px white solid;
+    border-bottom: 1px white solid;
+    border-radius: 5px;
+    margin: 1px 0px;
+    padding: 1px 5px;
+}

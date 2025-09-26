@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang ="en" xmlns:th="http://thymeleaf.org" >
+<head>
+	<title>Cadastro Prato</title>
+	<link rel="stylesheet" th:href="@{/css/listagem.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Schoolbell&family=Syne+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<div style="margin: 0px 0px 0px 10px;">
+	<a href="/prato"><button class="botao">Voltar</button></a>
+</div>
+<div layout:fragment="header">
+	<div class="box">
+		<h1>Cadastro Prato</h1>
+		<form method="post" action="/prato">
+			<input type="hidden" name="_method" value="put" th:if="${prato!= null}">
+			<input type="hidden" name="id" th:value="${prato?.id}">
+
+			<table>
+				<tbody>
+					<tr>
+						<th>Nome</th>
+						<th><input type="text" id="nome" name="nome" th:value="${prato?.nome}"></th>
+					</tr>
+					<tr>
+						<th>Valor</th>
+						<th><input type="text" id="valor" name="valor" th:value="${prato?.valor}"></th>
+					</tr>
+					<tr>
+						<th>Tempo</th>
+						<th><input type="text" id="tempoPreparo" name="tempoPreparo" th:value="${prato?.tempoPreparo}"></th>
+					</tr>
+					<tr>
+						<th colspan="2" style="text-align: right;"><input class="botao" type="submit" value="Cadastrar"></th>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

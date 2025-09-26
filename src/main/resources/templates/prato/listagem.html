@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/head :: head('Listagem Pratos')}"></head>
+<body>
+<header th:replace="~{fragmentos/header :: header(activePage='prato')}"></header>
+    <h1>Lista de Pratos</h1>
+    <div style="margin: 0px 0px 10px 10px;">
+        <a href="/prato/cadastro"><button class="botao">Novo Prato</button></a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Tempo de Preparo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="prato : ${lista}">
+                <td th:text="${prato.id}"></td>
+                <td class="recuo" th:text="${prato.nome}"></td>
+                <td style="text-align: right; padding: 0px 20px 0px 0px" th:text="'R$ ' + ${#numbers.formatDecimal(prato.valor,1 , 2)}"></td>
+                <td style="text-align: right; padding: 0px 20px 0px 0px" th:text="${prato.tempoPreparo} + ' min'"></td>
+                
+                <td class="acoes">
+                    <a th:href="@{/prato/cadastro?id={id}(id=${prato.id})}"><button class="botao">Editar</button></a>					
+                    <form action="/prato" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="id" th:value="${prato.id}">
+                        <input class="botao" type="submit" value="Excluir">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
