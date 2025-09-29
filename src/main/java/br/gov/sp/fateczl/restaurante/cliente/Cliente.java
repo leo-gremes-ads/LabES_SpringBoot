@@ -1,11 +1,10 @@
-package br.gov.sp.fateczl.restaurante.prato;
+package br.gov.sp.fateczl.restaurante.cliente;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,28 +17,24 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Prato
+public class Cliente
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "prato_id")
-    private long id;
+    @Column(name="cliente_id")
+    private Long id;
     private String nome;
-    private float valor;
-    private int tempoPreparo;
+    private String endereco;
 
-    public Prato(DadosCadastroPrato dados) 
+    public Cliente(DadosCadastroCliente dados)
     {
         this.nome = dados.nome();
-        this.valor = dados.valor();
-        this.tempoPreparo = dados.tempoPreparo();
+        this.endereco = dados.endereco();
     }
 
-    public void atualizar(@Valid DadosAtualizaPrato dados) {
-		if (dados.nome() != null) {
-			this.nome = dados.nome();
-			this.valor = dados.valor();
-            this.tempoPreparo = dados.tempoPreparo();
-		}
-	}
+    public void atualizar(DadosAtualizaCliente dados)
+    {
+        this.nome = dados.nome();
+        this.endereco = dados.endereco();
+    }
 }

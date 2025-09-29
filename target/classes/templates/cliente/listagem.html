@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelead.org" lang="pt-br">
+<head>
+    <title>Clientes</title>
+    <meta charset="UTF-8"/>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Schoolbell&family=Syne+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/listagem.css}">
+</head>
+<body>
+    <h1>Clientes</h1>
+    <div style="margin: 0px 0px 10px 10px;">
+        <a href="/hello"><button class="botao">Voltar</button></a>
+    </div>
+    <div style="margin: 20px 0px 10px 10px;">
+        <a href="/cliente/cadastro"><button class="botao">Novo Cliente</button></a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.id}"></td>
+                <td class="recuo" th:text="${cliente.nome}"></td>
+                <td class="recuo" th:text="${cliente.endereco}"></td>                
+                <td class="acoes">
+                    <a th:href="@{/cliente/cadastro?id={id}(id=${cliente.id})}"><button class="botao">Editar</button></a>					
+                    <form action="/cliente" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="id" th:value="${cliente.id}">
+                        <input class="botao" type="submit" value="Excluir">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

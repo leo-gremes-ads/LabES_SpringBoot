@@ -16,13 +16,14 @@ import jakarta.validation.Valid;
 public class PratoController
 {
     @Autowired
-    private PratoRepository repo;
+    private PratoService service;
+
 
     @GetMapping("/cadastro")
     public String carregaCadastro(Long id, Model model)
     {
         if (id != null) {
-            var prato = repo.getReferenceById(id);
+            var prato = service.procurarPorId(id);
             model.addAttribute("prato", prato);
         }
         return "prato/cadastro";
@@ -31,21 +32,21 @@ public class PratoController
     @GetMapping
     public String carregaListagem(Model model)
     {
-        model.addAttribute("lista", repo.findAll());
+        model.addAttribute("lista", service.procurarTodos());
         return "prato/listagem";
     }
 
     @PostMapping
 	@Transactional
 	public String cadastrar (@Valid DadosCadastroPrato dados) {
-		repo.save(new Prato(dados));
+		service.salvar(new Prato(dados));
 		return "redirect:prato";
 	}
 
     @PutMapping
 	@Transactional
 	public String atualizar (DadosAtualizaPrato dados) {
-		var prato = repo.getReferenceById(dados.id());
+		var prato = service.procurarPorId(dados.id());
 		prato.atualizar(dados);
 		return "redirect:prato";
 	}
@@ -54,7 +55,7 @@ public class PratoController
     @Transactional
     public String removePrato(Long id)
     {
-        repo.deleteById(id);
+        service.apagarPorId(id);
         return "redirect:prato";
     }
 }

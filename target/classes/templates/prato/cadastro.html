@@ -6,16 +6,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Schoolbell&family=Syne+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-<div style="margin: 0px 0px 0px 10px;">
-	<a href="/prato"><button class="botao">Voltar</button></a>
-</div>
-<div layout:fragment="header">
-	<div class="box">
-		<h1>Cadastro Prato</h1>
+	<h1 th:text="${prato != null} ? 'Editar Prato' : 'Adicionar Prato'"></h1>
+	<div style="margin: 0px 0px 0px 15px;">
+		<a href="/prato"><button class="botao">Voltar</button></a>
+	</div>
+	<div style="margin: 15px 5px 5px 5px">
 		<form method="post" action="/prato">
 			<input type="hidden" name="_method" value="put" th:if="${prato!= null}">
 			<input type="hidden" name="id" th:value="${prato?.id}">
-
 			<table>
 				<tbody>
 					<tr>

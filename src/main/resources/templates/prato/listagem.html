@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragmentos/head :: head('Listagem Pratos')}"></head>
+<head th:replace="~{fragmentos/head :: head('Pratos')}"></head>
 <body>
 <header th:replace="~{fragmentos/header :: header(activePage='prato')}"></header>
-    <h1>Lista de Pratos</h1>
+    <h1>Pratos</h1>
     <div style="margin: 0px 0px 10px 10px;">
+        <a href="/hello"><button class="botao">Voltar</button></a>
+    </div>
+    <div style="margin: 20px 0px 10px 10px;">
         <a href="/prato/cadastro"><button class="botao">Novo Prato</button></a>
     </div>
     <table>

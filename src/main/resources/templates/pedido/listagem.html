@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pedidos</title>
+    <meta charset="UTF-8"/>
+	<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Schoolbell&family=Syne+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/listagem.css}">
+</head>
+<body>
+    <h1>Pedidos</h1>
+    <div style="margin: 0px 0px 10px 10px;">
+        <a href="/hello"><button class="botao">Voltar</button></a>
+    </div>
+    <div style="margin: 20px 0px 10px 10px;">
+        <a href="/pedido/cadastro"><button class="botao">Novo Pedido</button></a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cliente</th>
+                <th>Prato</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedido : ${listaPedidos}">
+                <td th:text="${pedido.id}"></td>
+                <td class="recuo" th:text="${pedido.cliente.nome}"></td>
+                <td class="recuo" th:text="${pedido.prato.nome}"></td>
+                <td style="text-align: right; padding: 0px 20px 0px 0px" th:text="${pedido.qtd}"></td>
+                <td>
+                    <div class="acoes">
+                        <a th:href="@{/pedido/cadastro?id={id}(id=${pedido.id})}"><button class="botao">Editar</button></a>					
+                        <form action="/pedido" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${pedido.id}">
+                            <input class="botao" type="submit" value="Excluir">
+                        </form>
+                    </div>
+				</td> 
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang ="pt-br" xmlns:th="http://thymeleaf.org" >
+<head>
+	<title>Cadastro Cliente</title>
+    <meta charset="UTF-8"/>
+	<link rel="stylesheet" th:href="@{/css/listagem.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Schoolbell&family=Syne+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 th:text="${cliente != null} ? 'Editar Cliente' : 'Adicionar Cliente'"></h1>
+    <div style="margin: 0px 0px 0px 15px;">
+		<a href="/cliente"><button class="botao">Voltar</button></a>
+	</div>
+    <div style="margin: 15px 5px 5px 5px">
+		<form method="post" action="/cliente">
+			<input type="hidden" name="_method" value="put"	th:if="${cliente != null}">
+			<input type="hidden" name="id" th:value="${cliente?.id}">
+			<table>
+				<tbody>
+					<tr>
+						<th><label for="nome">Nome: </label></th>
+						<th><input type="text" id="nome" name="nome" th:value="${cliente?.nome}"></th>							
+					</tr>
+					<tr>
+						<th><label for="endereco">Endereço: </label></th>
+						<th><input type="text" id="endereco" name="endereco" th:value="${cliente?.endereco}"></th>							
+					</tr>
+					<tr>
+						<th colspan="2" style="text-align: right;"><input class="botao" type="submit" value="Cadastrar"></th>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
