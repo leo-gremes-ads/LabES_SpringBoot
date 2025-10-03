@@ -26,20 +26,20 @@ public class Prato
     private long id;
     private String nome;
     private float valor;
-    private int tempoPreparo;
+    private String categoria;
 
     public Prato(DadosCadastroPrato dados) 
     {
         this.nome = dados.nome();
         this.valor = dados.valor();
-        this.tempoPreparo = dados.tempoPreparo();
+        this.categoria = dados.categoria();
     }
 
     public void atualizar(@Valid DadosAtualizaPrato dados) {
 		if (dados.nome() != null) {
 			this.nome = dados.nome();
 			this.valor = dados.valor();
-            this.tempoPreparo = dados.tempoPreparo();
+            this.categoria = dados.categoria();
 		}
 	}
 }

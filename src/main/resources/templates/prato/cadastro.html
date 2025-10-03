@@ -25,8 +25,17 @@
 						<th><input type="text" id="valor" name="valor" th:value="${prato?.valor}"></th>
 					</tr>
 					<tr>
-						<th>Tempo</th>
-						<th><input type="text" id="tempoPreparo" name="tempoPreparo" th:value="${prato?.tempoPreparo}"></th>
+						<th>Categoria</th>
+						<th>
+							<select id="categoria" name="categoria" style="width: 100%;">
+								<option>Sem Categoria</option>
+								<option>Entrada</option>
+								<option>Prato Principal</option>
+								<option>Acompanhamento</option>
+								<option>Sobremesa</option>
+								<option>Bebida</option>								
+							</select>
+						</th>
 					</tr>
 					<tr>
 						<th colspan="2" style="text-align: right;"><input class="botao" type="submit" value="Cadastrar"></th>

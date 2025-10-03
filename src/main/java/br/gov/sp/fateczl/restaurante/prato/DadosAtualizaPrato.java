@@ -8,5 +8,5 @@ public record DadosAtualizaPrato
     Long id,
     String nome,
     float valor,
-    int tempoPreparo
+    String categoria
 ) {}

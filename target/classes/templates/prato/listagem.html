@@ -16,7 +16,7 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Valor</th>
-                <th>Tempo de Preparo</th>
+                <th>Categoria</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -25,7 +25,7 @@
                 <td th:text="${prato.id}"></td>
                 <td class="recuo" th:text="${prato.nome}"></td>
                 <td style="text-align: right; padding: 0px 20px 0px 0px" th:text="'R$ ' + ${#numbers.formatDecimal(prato.valor,1 , 2)}"></td>
-                <td style="text-align: right; padding: 0px 20px 0px 0px" th:text="${prato.tempoPreparo} + ' min'"></td>
+                <td class="recuo" th:text="${prato.categoria}"></td>
                 
                 <td class="acoes">
                     <a th:href="@{/prato/cadastro?id={id}(id=${prato.id})}"><button class="botao">Editar</button></a>					

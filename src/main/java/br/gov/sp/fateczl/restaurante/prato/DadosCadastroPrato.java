@@ -7,5 +7,5 @@ public record DadosCadastroPrato
     @NotBlank
     String nome,
     float valor,
-    int tempoPreparo
+    String categoria
 ) {}
